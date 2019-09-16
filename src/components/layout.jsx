@@ -24,7 +24,7 @@ const Layout = (props) => (
       </style>
 
     </Helmet>
-    <Navbar week={props.week} />
+    <Navbar week={props.week} updated={props.updated} year={props.year} />
     <div style={{ marginTop: '75px' }}>{props.children}</div>
   </div>
 );

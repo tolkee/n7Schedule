@@ -27,7 +27,7 @@ const Week = ({ pathContext: { week, year, updated }, data }) => {
   }, []);
 
   return (
-    <Layout week={week}>
+    <Layout week={week} updated={updated} year={year}>
       {Array.from(weekEvents, ([day, dayEvents], i) => (
         <Card key={i}>
           <CardHeader>

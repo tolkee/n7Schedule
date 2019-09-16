@@ -3,13 +3,16 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 
 const Wrapper = styled.nav`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   position: fixed;
   z-index: 100;
   top: 0;
   left: 0;
   width: 100%;
-  height: 80px;
-  padding: 25px;
+  height: 90px;
+  padding: 20px;
   box-sizing: border-box;
   background-color: #121212;
   box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 10px;
@@ -41,23 +44,36 @@ const IconNavigation = styled(Link).attrs(() => ({
 const Navbar = (props) => (
   <Wrapper>
     <Overlay />
-    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-      <IconNavigation to={`/${2019}/${props.week - 1}`}>
+    <IconNavigation to={`/${props.year}/${props.week - 1}`}>
 chevron_left
-      </IconNavigation>
-      <div>
-        <span style={{ fontWeight: '800', color: 'white', fontSize: '30px' }}>Week</span>
+    </IconNavigation>
+    <div style={{
+      display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexDirection: 'column',
+    }}
+    >
+      <div style={{ fontWeight: '800', color: 'white', fontSize: '30px' }}>
+Week
+        {' '}
         <span style={{
-          marginLeft: '10px', fontWeight: '800', color: 'orange', fontSize: '30px',
+          marginLeft: '5px', color: 'orange',
         }}
         >
           {props.week}
         </span>
       </div>
-      <IconNavigation to={`/${2019}/${props.week + 1}`}>
-chevron_right
-      </IconNavigation>
+      <div style={{
+        color: 'green', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '15px',
+      }}
+      >
+        <i className="material-icons">
+update
+        </i>
+        {props.updated}
+      </div>
     </div>
+    <IconNavigation to={`/${props.year}/${props.week + 1}`}>
+chevron_right
+    </IconNavigation>
   </Wrapper>
 );
 
