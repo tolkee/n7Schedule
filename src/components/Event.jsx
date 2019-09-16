@@ -11,7 +11,7 @@ const Wrapper = styled.div`
 
 const Event = (event) => {
   const {
-    LOCATION, DTSTART, DTEND, type, course,
+    LOCATION, DTSTART, DTEND, type, course, SUMMARY,
   } = event.event;
 
   const getTypeColor = (eventType) => {
@@ -37,7 +37,7 @@ const Event = (event) => {
         ]
       </span>
       <span style={{ color: 'orange', fontWeight: '900', marginRight: '10px' }}>{LOCATION}</span>
-      <span style={{ marginRight: '10px', color: 'white' }}>{course}</span>
+      <span style={{ marginRight: '10px', color: 'white' }}>{SUMMARY}</span>
     </Wrapper>
   );
 };

@@ -45,40 +45,44 @@ const IconNavigation = styled(Link).attrs(() => ({
   }
 `;
 
-const Navbar = (props) => (
-  <Wrapper>
-    <Overlay />
-    <IconNavigation to={`/${props.year}/${props.week - 1}`}>
-      chevron_left
-    </IconNavigation>
-    <div style={{
-      display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexDirection: 'column',
-    }}
-    >
-      <div style={{ fontWeight: '800', color: 'white', fontSize: '30px' }}>
-        Week
-        {' '}
-        <span style={{
-          marginLeft: '5px', color: 'orange',
-        }}
-        >
-          {props.week}
-        </span>
-      </div>
+const Navbar = (props) => {
+  const { year, week, updated } = props;
+  return (
+
+    <Wrapper>
+      <Overlay />
+      <IconNavigation to={`/${week === 1 ? year - 1 : year}/${week === 1 ? 53 : week - 1}`}>
+        chevron_left
+      </IconNavigation>
       <div style={{
-        color: '#BADFBD', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '15px',
+        display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexDirection: 'column',
       }}
       >
-        <i className="material-icons">
-          update
-        </i>
-        {props.updated}
+        <div style={{ fontWeight: '800', color: 'white', fontSize: '30px' }}>
+          Week
+          {' '}
+          <span style={{
+            marginLeft: '5px', color: 'orange',
+          }}
+          >
+            {week}
+          </span>
+        </div>
+        <div style={{
+          color: '#BADFBD', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '15px',
+        }}
+        >
+          <i className="material-icons">
+            update
+          </i>
+          {updated}
+        </div>
       </div>
-    </div>
-    <IconNavigation to={`/${props.year}/${props.week + 1}`}>
-      chevron_right
-    </IconNavigation>
-  </Wrapper>
-);
+      <IconNavigation to={`/${week === 53 ? year + 1 : year}/${week === 53 ? 1 : week + 1}`}>
+        chevron_right
+      </IconNavigation>
+    </Wrapper>
+  );
+};
 
 export default Navbar;

@@ -6,7 +6,7 @@ export const formatEvents = (data) => {
   const events = data.allCalendarJson.edges.map(({ node }) => node);
   events.forEach((event) => {
     const eventDay = DateTime.fromISO(event.DTSTART).toLocaleString({ weekday: 'long', month: 'short', day: '2-digit' });
-    ['APP1A', 'SN', 'MF2E'].forEach((el) => {
+    ['APP', '1A', 'SN', 'MF2E'].forEach((el) => {
       event.SUMMARY = event.SUMMARY.replace(el, '');
     });
     if (event.SUMMARY.includes('-')) {

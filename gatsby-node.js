@@ -10,7 +10,7 @@ const fs = require('fs');
 const path = require('path');
 const { DateTime } = require('luxon');
 
-const REMOTE_URL = 'https://calendar.google.com/calendar/ical/guillaume.lacoste65%40gmail.com/private-4580377d5b9948bdec093524a0ce9e59/basic.ics';
+const REMOTE_URL = 'https://edt.inp-toulouse.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=174&projectId=20&calType=ical&firstDate=2019-08-01&lastDate=2020-07-15';
 
 const getIcal = (local) => {
   if (local) {
@@ -28,7 +28,7 @@ const getIcal = (local) => {
 exports.onPreBuild = async () => {
   // empty /public folder
   console.log('----------- Request the ICAL');
-  const text = await getIcal(true);
+  const text = await getIcal(false);
 
   console.log('----------- convert to JSON the ICAL');
   const events = ical2json.convert(text).VCALENDAR[0].VEVENT;
@@ -58,14 +58,14 @@ exports.createPages = async ({ boundActionCreators }) => {
   const years = [actualDate.year, actualDate.year + 1];
 
   years.forEach((year) => {
-    for (let week = 0; week < 53; week++) {
+    for (let week = 1; week <= 53; week++) {
       createPage({
         path: `/${year}/${week}`,
         component: weekTemplate,
         context: {
           year,
           week,
-          updated: DateTime.local().toLocaleString(DateTime.DATETIME_MED_WITH_SECONDS),
+          updated: DateTime.local().setLocale('fr').toFormat('dd LLL yyyy, HH:mm:ss'),
         },
       });
     }
