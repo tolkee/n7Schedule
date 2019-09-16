@@ -65,7 +65,7 @@ exports.createPages = async ({ boundActionCreators }) => {
         context: {
           year,
           week,
-          updated: DateTime.local().setLocale('en-GB').toLocaleString(DateTime.DATETIME_MED_WITH_SECONDS),
+          updated: DateTime.local().toLocaleString(DateTime.DATETIME_MED_WITH_SECONDS),
         },
       });
     }

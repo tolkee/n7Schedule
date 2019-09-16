@@ -5,8 +5,8 @@ import React, { useState, useEffect } from 'react';
 import { graphql } from 'gatsby';
 import { DateTime } from 'luxon';
 import styled from 'styled-components';
-import Event from '../components/event';
-import Layout from '../components/layout';
+import Event from '../components/Event';
+import Layout from '../components/Layout';
 import Card from '../components/Card';
 import { formatEvents } from '../utils';
 import FlexSeparator from '../components/FlexSeparator';
@@ -20,10 +20,10 @@ const CardHeader = styled.div`
 
 const Week = ({ pathContext: { week, year, updated }, data }) => {
   const weekEvents = formatEvents(data);
-  const [date, setDate] = useState(0);
+  const [currentDate, setCurrentDate] = useState(0);
 
   useEffect(() => {
-    setDate(DateTime.local());
+    setCurrentDate(DateTime.local());
   }, []);
 
   return (
@@ -31,24 +31,17 @@ const Week = ({ pathContext: { week, year, updated }, data }) => {
       {Array.from(weekEvents, ([day, dayEvents], i) => (
         <Card key={i}>
           <CardHeader>
-            <span style={{ fontSize: '24px', fontWeight: '600', color: 'white' }}>
+            <span style={{ fontSize: '22px', fontWeight: '500', color: 'white' }}>
               {day}
-,
-            </span>
-            <span style={{
-              fontSize: '17x', fontWeight: '300', color: 'white', marginLeft: '5px',
-            }}
-            >
-              {DateTime.fromISO(dayEvents[0].DTSTART).toFormat('dd LLLL')}
             </span>
             <FlexSeparator />
-            {DateTime.fromISO(dayEvents[0].DTSTART).hasSame(date, 'day') && (
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <i className="material-icons" style={{ color: 'green' }}>
-today
-              </i>
-              <span style={{ fontWeight: '600', color: 'green' }}>TODAY</span>
-            </div>
+            {DateTime.fromISO(dayEvents[0].DTSTART).hasSame(currentDate, 'day') && (
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <i className="material-icons" style={{ color: 'green' }}>
+                  today
+                </i>
+                <span style={{ fontWeight: '600', color: 'green' }}>TODAY</span>
+              </div>
             )}
 
           </CardHeader>

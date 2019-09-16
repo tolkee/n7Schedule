@@ -36,7 +36,11 @@ const IconNavigation = styled(Link).attrs(() => ({
   color: white;
   text-decoration: none;
   border-bottom: 2px solid orange;
+  transition: color 0.5s ease;
   &:active {
+    color: orange
+  }
+  &:hover {
     color: orange
   }
 `;
@@ -45,14 +49,14 @@ const Navbar = (props) => (
   <Wrapper>
     <Overlay />
     <IconNavigation to={`/${props.year}/${props.week - 1}`}>
-chevron_left
+      chevron_left
     </IconNavigation>
     <div style={{
       display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexDirection: 'column',
     }}
     >
       <div style={{ fontWeight: '800', color: 'white', fontSize: '30px' }}>
-Week
+        Week
         {' '}
         <span style={{
           marginLeft: '5px', color: 'orange',
@@ -62,17 +66,17 @@ Week
         </span>
       </div>
       <div style={{
-        color: 'green', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '15px',
+        color: '#BADFBD', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '15px',
       }}
       >
         <i className="material-icons">
-update
+          update
         </i>
         {props.updated}
       </div>
     </div>
     <IconNavigation to={`/${props.year}/${props.week + 1}`}>
-chevron_right
+      chevron_right
     </IconNavigation>
   </Wrapper>
 );
