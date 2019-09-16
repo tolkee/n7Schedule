@@ -1,17 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'gatsby';
 
 const Wrapper = styled.nav`
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: fixed;
   z-index: 100;
   top: 0;
   left: 0;
   width: 100%;
   height: 80px;
-  user-select: none;
   padding: 25px;
   box-sizing: border-box;
   background-color: #121212;
@@ -20,29 +17,46 @@ const Wrapper = styled.nav`
 
 const Overlay = styled.nav`
   position: absolute;
-  z-index: 150;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  user-select: none;
   box-sizing: border-box;
   background-color: rgb(255, 255, 255);
   opacity: .08;
 `;
 
+const IconNavigation = styled(Link).attrs(() => ({
+  className: 'material-icons',
+}))`
+  z-index: 100;
+  color: white;
+  text-decoration: none;
+  border-bottom: 2px solid orange;
+  &:active {
+    color: orange
+  }
+`;
 
 const Navbar = (props) => (
   <Wrapper>
     <Overlay />
-    <div style={{ zIndex: 180 }}>
-      <span style={{ fontWeight: '800', color: 'white', fontSize: '30px' }}>Week</span>
-      <span style={{
-        marginLeft: '10px', fontWeight: '800', color: 'orange', fontSize: '30px',
-      }}
-      >
-        {props.week}
-      </span>
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <IconNavigation to={`/${2019}/${props.week - 1}`}>
+chevron_left
+      </IconNavigation>
+      <div>
+        <span style={{ fontWeight: '800', color: 'white', fontSize: '30px' }}>Week</span>
+        <span style={{
+          marginLeft: '10px', fontWeight: '800', color: 'orange', fontSize: '30px',
+        }}
+        >
+          {props.week}
+        </span>
+      </div>
+      <IconNavigation to={`/${2019}/${props.week + 1}`}>
+chevron_right
+      </IconNavigation>
     </div>
   </Wrapper>
 );

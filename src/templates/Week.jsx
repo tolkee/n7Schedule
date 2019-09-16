@@ -11,6 +11,7 @@ import Card from '../components/Card';
 import { formatEvents } from '../utils';
 import FlexSeparator from '../components/FlexSeparator';
 
+
 const CardHeader = styled.div`
   margin-bottom: 20px;
   display: flex;
@@ -41,7 +42,15 @@ const Week = ({ pathContext: { week, year, updated }, data }) => {
               {DateTime.fromISO(dayEvents[0].DTSTART).toFormat('dd LLLL')}
             </span>
             <FlexSeparator />
-            {DateTime.fromISO(dayEvents[0].DTSTART).hasSame(date, 'day') && <span style={{ fontWeight: '600', color: 'green' }}>TODAY</span>}
+            {DateTime.fromISO(dayEvents[0].DTSTART).hasSame(date, 'day') && (
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <i className="material-icons" style={{ color: 'green' }}>
+today
+              </i>
+              <span style={{ fontWeight: '600', color: 'green' }}>TODAY</span>
+            </div>
+            )}
+
           </CardHeader>
           {dayEvents.map((event, index) => (
             <Event key={index} event={event} />

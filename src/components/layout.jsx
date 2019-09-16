@@ -6,6 +6,10 @@ import Navbar from './Navbar';
 const Layout = (props) => (
   <div>
     <Helmet title="foo bar" defer={false}>
+      <link
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet"
+      />
       <style global jsx>
         {`
           body,
