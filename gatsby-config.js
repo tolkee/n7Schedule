@@ -17,7 +17,7 @@ module.exports = {
       options: {
         name: 'N7Schedule',
         short_name: 'N7Schedule',
-        start_url: '/2019/38',
+        start_url: '/',
         icon: 'src/images/calendar.png',
         display: 'standalone',
       },

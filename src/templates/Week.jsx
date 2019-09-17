@@ -26,6 +26,15 @@ const Week = ({ pathContext: { week, year, updated }, data }) => {
     setCurrentDate(DateTime.local());
   }, []);
 
+  useEffect(() => {
+    window.addEventListener('beforeinstallprompt', (e) => {
+      // Prevent Chrome 76 and later from showing the mini-infobar
+      e.preventDefault();
+      // Stash the event so it can be triggered later.
+      e.prompt();
+    });
+  }, []);
+
   return (
     <Layout week={week} updated={updated} year={year}>
       {Array.from(weekEvents, ([day, dayEvents], i) => (
