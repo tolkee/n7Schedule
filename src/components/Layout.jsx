@@ -20,7 +20,7 @@ const FabButton = styled.div.attrs(() => ({
   width: 36px;
   transition: transform 2s ease, background-color .8s ease;
   box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 10px;
-  transform: ${(p) => (p.updating ? 'rotate(780deg)' : 'none')};
+  transform: ${(p) => (p.updating ? 'rotate(720deg)' : 'none')};
 
   &:active {
     background-color: white;

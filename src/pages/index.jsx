@@ -1,11 +1,11 @@
-import React from 'react';
+import { useEffect } from 'react';
+import { navigate } from 'gatsby';
+import { DateTime } from 'luxon';
 
-import SEO from '../components/seo';
-
-const IndexPage = () => (
-  <>
-    <SEO title="N7 Schedule" />
-  </>
-);
-
-export default IndexPage;
+export default () => {
+  useEffect(() => {
+    const now = DateTime.local();
+    navigate(`/${now.weekYear}/${now.weekNumber}`);
+  }, []);
+  return null;
+};

@@ -37,7 +37,7 @@ const Event = (event) => {
         ]
       </span>
       <span style={{ color: 'orange', fontWeight: '900', marginRight: '10px' }}>{LOCATION}</span>
-      <span style={{ marginRight: '10px', color: 'white' }}>{SUMMARY}</span>
+      <span style={{ marginRight: '10px', color: 'white' }}>{course}</span>
     </Wrapper>
   );
 };

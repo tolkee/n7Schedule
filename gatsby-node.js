@@ -70,11 +70,4 @@ exports.createPages = async ({ boundActionCreators }) => {
       });
     }
   });
-
-  const now = DateTime.local();
-
-  createRedirect({
-    fromPath: '/',
-    toPath: `/${now.weekYear}/${now.weekNumber}`,
-  });
 };
