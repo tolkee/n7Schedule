@@ -56,7 +56,7 @@ exports.createPages = async ({ boundActionCreators }) => {
   const actualDate = DateTime.local();
 
   const years = [actualDate.year, actualDate.year + 1];
-  const updated = actualDate.toFormat('dd LLL yyyy, HH:mm:ss');
+  const updated = actualDate.plus({ hours: 2 }).toFormat('dd LLL yyyy, HH:mm:ss');
 
   years.forEach((year) => {
     for (let week = 1; week <= 53; week++) {

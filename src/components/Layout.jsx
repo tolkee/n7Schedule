@@ -29,7 +29,7 @@ const FabButton = styled.div.attrs(() => ({
 `;
 
 const Footer = styled.footer`
-  background-color: black;
+  background-color: #0c0c0c;
   height: 100px;
   color: white;
   display: flex;
