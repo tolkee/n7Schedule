@@ -11,6 +11,7 @@ module.exports = {
     'gatsby-plugin-styled-components',
     'gatsby-transformer-json',
     'gatsby-plugin-react-helmet',
+    'gatsby-image',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
