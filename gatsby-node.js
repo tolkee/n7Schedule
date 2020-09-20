@@ -10,7 +10,7 @@ const fs = require('fs');
 const path = require('path');
 const { DateTime } = require('luxon');
 
-const REMOTE_URL = 'https://edt.inp-toulouse.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=174&projectId=20&calType=ical&firstDate=2019-08-01&lastDate=2020-07-15';
+const REMOTE_URL = 'https://edt.inp-toulouse.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=187&projectId=46&calType=ical&firstDate=2020-08-01&lastDate=2021-07-15';
 
 const getIcal = (local) => {
   if (local) {
