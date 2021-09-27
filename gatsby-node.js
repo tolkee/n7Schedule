@@ -67,19 +67,20 @@ exports.createPages = async ({ boundActionCreators }) => {
     .plus({ hours: 2 })
     .toFormat("dd LLL yyyy, HH:mm:ss");
 
-  // years.forEach(year => {
-  //   for (let week = 1; week <= 53; week++) {
-  //     createPage({
-  //       path: `/${year}/${week}`,
-  //       component: weekTemplate,
-  //       context: {
-  //         year,
-  //         week,
-  //         updated,
-  //       },
-  //     });
-  //   }
-  // });
+  years.forEach(year => {
+    for (let week = 1; week <= 53; week++) {
+      createPage({
+        path: `/${year}/${week}`,
+        // component: weekTemplate,
+        component: comingBackTemplate,
+        context: {
+          year,
+          week,
+          updated,
+        },
+      });
+    }
+  });
 
   createPage({
     path: "/comingback",
